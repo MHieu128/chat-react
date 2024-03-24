@@ -2,6 +2,15 @@ import React from "react";
 import CustomPrimaryButton from "../../shared/components/CustomPrimaryButton";
 import RedirectInfo from "../../shared/components/RedirectInfo";
 import { useNavigate } from "react-router-dom";
+import { Tooltip } from "@mui/material";
+
+const getFormNotValidMessage = () => {
+  return "Enter correct username and password should contains between 6 and 12 characters";
+};
+
+const getFormValidMessage = () => {
+  return "Press to log in!";
+};
 
 const LoginPageFooter = ({ handleLogin, isFormValid }) => {
   const navigate = useNavigate();
@@ -11,14 +20,18 @@ const LoginPageFooter = ({ handleLogin, isFormValid }) => {
 
   return (
     <>
-      <div>
-        <CustomPrimaryButton
-          label='Log in'
-          additionalStyles={{ marginTop: "30px" }}
-          disabled={!isFormValid}
-          onClick={handleLogin}
-        />
-      </div>
+      <Tooltip
+        title={!isFormValid ? getFormNotValidMessage() : getFormValidMessage()}
+      >
+        <div>
+          <CustomPrimaryButton
+            label='Log in'
+            additionalStyles={{ marginTop: "30px" }}
+            disabled={!isFormValid}
+            onClick={handleLogin}
+          />
+        </div>
+      </Tooltip>
       <RedirectInfo
         text='Need an account? '
         redirectText='Create an account'
