@@ -3,6 +3,7 @@ import AuthBox from "../../shared/components/AuthBox";
 import LoginPageHeader from "./LoginPageHeader";
 import LoginPageInputs from "./LoginPageInputs";
 import LoginPageFooter from "./LoginPageFooter";
+import { validateLoginForm } from "../../shared/Utils/Validators";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -12,6 +13,8 @@ const LoginPage = () => {
     setIsFormValid(validateLoginForm({ username, password }));
   }, [username, password, setIsFormValid]);
   const handleLogin = () => {
+    console.log(username);
+    console.log(password);
     console.log("Login in");
   };
   return (
@@ -23,7 +26,7 @@ const LoginPage = () => {
         password={password}
         setPassword={setPassword}
       />
-      <LoginPageFooter isFormValid={isFormValid} handleLogin={handleLogin} />
+      <LoginPageFooter handleLogin={handleLogin} isFormValid={isFormValid} />
     </AuthBox>
   );
 };
