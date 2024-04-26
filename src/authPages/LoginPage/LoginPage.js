@@ -12,6 +12,7 @@ const LoginPage = ({ login }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     setIsFormValid(validateLoginForm({ username, password }));
   }, [username, password, setIsFormValid]);

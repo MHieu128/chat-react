@@ -19,7 +19,7 @@ const setUserDetails = (userDetails) => {
   };
 };
 
-const login = (userDetails, history) => {
+const login = (userDetails, navigate) => {
   return async (dispatch) => {
     const response = api.login(userDetails);
     if (response.error) {
@@ -28,12 +28,12 @@ const login = (userDetails, history) => {
       localStorage.setItem("user", JSON.stringify(userDetails));
 
       dispatch(setUserDetails(userDetails));
-      history.push("/dashboard");
+      navigate("/dashboard");
     }
   };
 };
 
-const register = (userDetails, history) => {
+const register = (userDetails, navigate) => {
   return async (dispatch) => {
     const response = api.register(userDetails);
     if (response.error) {
@@ -42,7 +42,7 @@ const register = (userDetails, history) => {
       localStorage.setItem("user", JSON.stringify(userDetails));
 
       dispatch(setUserDetails(userDetails));
-      history.push("/dashboard");
+      navigate("/dashboard");
     }
   };
 };
