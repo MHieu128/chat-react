@@ -6,9 +6,9 @@ export const authActions = {
 
 export const getActions = (dispatch) => {
   return {
-    login: (userDetails, history) => dispatch(login(userDetails, history)),
-    register: (userDetails, history) =>
-      dispatch(register(userDetails, history)),
+    login: (userDetails, navigate) => dispatch(login(userDetails, navigate)),
+    register: (userDetails, navigate) =>
+      dispatch(register(userDetails, navigate)),
   };
 };
 
